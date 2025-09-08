@@ -1,8 +1,9 @@
 {
 	"manifest_version": 2,
 	"name": "ChessKey",
-	"version": "1.0.2",
+	"version": "2.0.0",
 	"description": "Chesskey restricts access to the Lichess Games function until you have passed a certain number of puzzles in the Puzzle Streak feature. After you've passed your goal, you have a ten minute window to play a game before the feature is locked out again. Games are unlocked for each additional 5 puzzles you solve past your goal.",
+	"homepage_url": "https://github.com/mitenko/chesskey",
 	"icons": {
 		"48": "icons/icon48.png",
 		"96": "icons/icon96.png"
