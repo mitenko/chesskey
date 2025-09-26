@@ -19,6 +19,7 @@ export class ChessKeyData {
     }
 
     dumpToLog() {
+        debugLog(`[dumpToLog] currentScore [${this.currentScore}]`);
         debugLog(`[dumpToLog] targetScore [${this.targetScore}]`);
         debugLog(`[dumpToLog] expireTime [${this.expireTime}]`);
         debugLog(`[dumpToLog] disableBlitz [${this.disableBlitz}]`);

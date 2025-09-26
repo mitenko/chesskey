@@ -1828,41 +1828,46 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
+
 function checkActiveTime() {
     return __awaiter(this, void 0, void 0, function () {
-        var now, hours, minutes, hasActiveTime, tournamentUrlRegex, error_1;
+        var now, hours, minutes, data, hasActiveTime, tournamentUrlRegex, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, 4, 5]);
+                    _a.trys.push([0, 4, 5, 6]);
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] START');
                     now = new Date();
                     hours = now.getHours();
                     minutes = now.getMinutes();
-                    if (!(hours >= 6 && hours < 17)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.checkHasActiveTime)()];
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.getData)()];
                 case 1:
+                    data = _a.sent();
+                    if (!(hours >= 6 && hours < 17)) return [3 /*break*/, 3];
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.checkHasActiveTime)()];
+                case 2:
                     hasActiveTime = _a.sent();
                     console.log('[checkActiveTime] hasActiveTime [' + hasActiveTime + ']');
                     tournamentUrlRegex = new RegExp('.*tournament.*');
                     // if is tournament page redirect always
-                    if (!hasActiveTime || tournamentUrlRegex.test(window.location.href)) {
+                    if (!hasActiveTime ||
+                        (data.disableBlitz && tournamentUrlRegex.test(window.location.href))) {
                         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] redirecting');
                         window.location.replace("https://lichess.org/streak");
                     }
                     else {
                         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] proceed');
                     }
-                    _a.label = 2;
-                case 2: return [3 /*break*/, 5];
-                case 3:
+                    _a.label = 3;
+                case 3: return [3 /*break*/, 6];
+                case 4:
                     error_1 = _a.sent();
                     console.error("[checkActiveTime] ".concat(error_1.toString()));
-                    return [3 /*break*/, 5];
-                case 4:
+                    return [3 /*break*/, 6];
+                case 5:
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] DONE');
                     return [7 /*endfinally*/];
-                case 5: return [2 /*return*/];
+                case 6: return [2 /*return*/];
             }
         });
     });
@@ -1962,6 +1967,7 @@ var ChessKeyData = /** @class */ (function () {
         this.currentScore = currentScore !== null && currentScore !== void 0 ? currentScore : 0;
     }
     ChessKeyData.prototype.dumpToLog = function () {
+        (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] currentScore [".concat(this.currentScore, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] targetScore [".concat(this.targetScore, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] expireTime [".concat(this.expireTime, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] disableBlitz [".concat(this.disableBlitz, "]"));
@@ -2148,8 +2154,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 function setData(data) {
-    (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[setData]");
-    // chessKeyData.dumpToLog();
+    //debugLog(`[setData]`);
+    //data.dumpToLog();
     webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.sync.set({ "chessKeyData": data });
 }
 function getData() {
@@ -2161,7 +2167,6 @@ function getData() {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[getData]");
                                     chessKeyData = new _data__WEBPACK_IMPORTED_MODULE_2__.ChessKeyData();
                                     _a.label = 1;
                                 case 1:
@@ -2172,7 +2177,7 @@ function getData() {
                                     //let str = JSON.stringify(chessKeyDataStore);
                                     //debugLog(str);
                                     if ((chessKeyDataStore === null || chessKeyDataStore === void 0 ? void 0 : chessKeyDataStore.chessKeyData) != null) {
-                                        (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)('data retrived');
+                                        //debugLog('data retrived');
                                         chessKeyData = chessKeyDataStore.chessKeyData;
                                     }
                                     return [3 /*break*/, 4];
@@ -2327,6 +2332,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
+
 var scoreDivName = "puzzle__side__streak__score text";
 var activeScore = -1;
 var scoreCheckDelayMillis = 800;
@@ -2334,25 +2340,48 @@ var targetScore = 30;
 var targetTimeAdded = false;
 // region Active Score Tracker
 function onScoreChange() {
-    //debugLog("[onScoreChange] START");
-    try {
-        var curScore = getCurScore();
-        console.log("[onScoreChange] Current Score [".concat(curScore, "]"));
-        var runningScore = curScore;
-        if (curScore == targetScore && targetTimeAdded == false) {
-            (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
-            console.log("[onScoreChange] HIT TARGET! KEEP GOING!");
-            targetTimeAdded = true;
-        }
-        if (curScore >= targetScore && curScore % 5 == 0) {
-            (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
-            console.log("[onScoreChange] GO FOR GOLD!");
-        }
-    }
-    catch (error) {
-        console.log("[onScoreChange] ".concat(error.toString()));
-    }
-    //debugLog("[onScoreChange] DONE");
+    return __awaiter(this, void 0, void 0, function () {
+        var curScore, runningScore, data, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    curScore = getCurScore();
+                    console.log("[onScoreChange] Current Score [".concat(curScore, "]"));
+                    runningScore = curScore;
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getData)()];
+                case 1:
+                    data = _a.sent();
+                    //console.log(`[onScoreChange] data currentScore [${data.currentScore}]`);
+                    if (curScore < data.currentScore) {
+                        console.log("[onScoreChange] STREAK OVER :(");
+                        if (data.currentScore >= data.targetScore - 5) {
+                            console.log("[onScoreChange] BAD BEAT. Take a break");
+                            (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
+                        }
+                    }
+                    data.currentScore = curScore;
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.setData)(data)];
+                case 2:
+                    _a.sent();
+                    if (curScore == targetScore && targetTimeAdded == false) {
+                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
+                        console.log("[onScoreChange] HIT TARGET! KEEP GOING!");
+                        targetTimeAdded = true;
+                    }
+                    if (curScore >= targetScore && curScore % 5 == 0) {
+                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
+                        console.log("[onScoreChange] GO FOR GOLD!");
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.log("[onScoreChange] ".concat(error_1.toString()));
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
 }
 function getScoreContainer() {
     // debugLog('[getScoreContainer] START');
@@ -2394,8 +2423,10 @@ function getCurScore() {
         getCurScoreResult = parseInt(curValueString);
     }
     catch (error) {
-        console.error('[getCurScore] ' + error.toString());
+        console.error('[getCurScore] ERROR ' + error.toString());
     }
+    //debugLog('[getCurScore] pre-parsed [' + getCurScoreResult + ']');
+    getCurScoreResult = getCurScoreResult || 0;
     //debugLog('[getCurScore] DONE [' + getCurScoreResult + ']');
     return getCurScoreResult;
 }
@@ -2515,6 +2546,7 @@ var Mode;
 (function (Mode) {
     Mode["TRACK_STREAK"] = "TRACK_STREAK";
     Mode["CHECK_ACTIVE_TIME"] = "CHECK_ACTIVE_TIME";
+    Mode["OPTIONS"] = "OPTIONS";
 })(Mode || (Mode = {}));
 function getMode() {
     var url = window.location.href;
@@ -2522,8 +2554,12 @@ function getMode() {
     var determinedMode = Mode.CHECK_ACTIVE_TIME; // default
     var streakRegEx = new RegExp('.*streak.*');
     var timeCheckRegEx = new RegExp('.*(pool|any|tournament).*');
+    var optionsRegEx = new RegExp('.*dist\/options.html');
     if (streakRegEx.test(url)) {
         determinedMode = Mode.TRACK_STREAK;
+    }
+    else if (optionsRegEx.test(url)) {
+        determinedMode = Mode.OPTIONS;
     }
     else {
         determinedMode = Mode.CHECK_ACTIVE_TIME;
@@ -2536,7 +2572,7 @@ function getInputElement(id) {
 }
 function debugLog(msg) {
     // disable for production release
-    //console.log(msg);
+    console.log(msg);
     var htmlLog = document.getElementById("debug-log-output");
     if (htmlLog != null) {
         htmlLog.innerHTML = htmlLog.innerHTML + " | " + msg;
@@ -2653,8 +2689,10 @@ try {
         case _util__WEBPACK_IMPORTED_MODULE_0__.Mode.CHECK_ACTIVE_TIME:
             (0,_active_time_check__WEBPACK_IMPORTED_MODULE_2__.checkActiveTime)();
             break;
+        case _util__WEBPACK_IMPORTED_MODULE_0__.Mode.OPTIONS:
+            (0,_options__WEBPACK_IMPORTED_MODULE_5__.initOptionsIfAble)();
+            break;
     }
-    (0,_options__WEBPACK_IMPORTED_MODULE_5__.initOptionsIfAble)();
     (0,_storage__WEBPACK_IMPORTED_MODULE_4__.getDisableBlitz)().then(function (disableBlitz) {
         if (disableBlitz) {
             (0,_blitz_control__WEBPACK_IMPORTED_MODULE_6__.initBlitzControl)();

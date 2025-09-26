@@ -1,5 +1,7 @@
 import { getTargetScore, addActiveMinutes } from './storage';
 import { debugLog } from './util';
+import { getData, setData } from './storage';
+import { ChessKeyData } from './data';
 
 const scoreDivName = "puzzle__side__streak__score text";
 var activeScore = -1;
@@ -8,12 +10,25 @@ let targetScore = 30;
 let targetTimeAdded = false;
 
 // region Active Score Tracker
-function onScoreChange() {
+async function onScoreChange() {
     //debugLog("[onScoreChange] START");
     try {
         let curScore = getCurScore();
         console.log(`[onScoreChange] Current Score [${curScore}]`);
         let runningScore = curScore;
+        
+        // update the currentscore
+        let data: ChessKeyData = await getData();
+        //console.log(`[onScoreChange] data currentScore [${data.currentScore}]`);
+        if (curScore < data.currentScore) {
+            console.log("[onScoreChange] STREAK OVER :(");
+            if (data.currentScore >= data.targetScore - 5) {
+                console.log("[onScoreChange] BAD BEAT. Take a break");
+                addActiveMinutes(5);
+            }
+        } 
+        data.currentScore = curScore;
+        await setData(data);
 
         if (curScore == targetScore && targetTimeAdded == false) {
             addActiveMinutes(10);
@@ -70,8 +85,10 @@ function getCurScore() {
         //console.log(`[getCurScore] ${curValueString}`);
         getCurScoreResult = parseInt(curValueString);
     } catch (error) {
-        console.error('[getCurScore] ' + error.toString());
+        console.error('[getCurScore] ERROR ' + error.toString());
     }
+    //debugLog('[getCurScore] pre-parsed [' + getCurScoreResult + ']');
+    getCurScoreResult = getCurScoreResult || 0;
     //debugLog('[getCurScore] DONE [' + getCurScoreResult + ']');
     return getCurScoreResult;
 }

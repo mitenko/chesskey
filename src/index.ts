@@ -7,7 +7,6 @@ import { initOptionsIfAble } from './options';
 import { initBlitzControl } from './blitz_control';
 
 try {
-    console.log('TODO: curScore storage');
     console.log('TODO: time of day as an option');
 
     let mode = getMode();
@@ -19,9 +18,10 @@ try {
         case Mode.CHECK_ACTIVE_TIME:
             checkActiveTime();
             break;
+        case Mode.OPTIONS:
+            initOptionsIfAble();
+            break;
     }
-
-    initOptionsIfAble();
 
     getDisableBlitz().then((disableBlitz) => {
         if (disableBlitz) {

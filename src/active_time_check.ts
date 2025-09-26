@@ -1,5 +1,7 @@
 import { debugLog } from "./util";
 import { checkHasActiveTime } from "./storage";
+import { ChessKeyData } from "./data";
+import { getData } from './storage';
 
 export async function checkActiveTime() {
     try {
@@ -8,6 +10,7 @@ export async function checkActiveTime() {
         let now = new Date();
         let hours = now.getHours();
         let minutes = now.getMinutes();
+        let data : ChessKeyData = await getData();
 
         if (hours >= 6 && hours < 17) {
             let hasActiveTime: boolean = await checkHasActiveTime();
@@ -16,7 +19,9 @@ export async function checkActiveTime() {
             let tournamentUrlRegex = new RegExp('.*tournament.*');
 
             // if is tournament page redirect always
-            if (!hasActiveTime || tournamentUrlRegex.test(window.location.href)) {
+            if (!hasActiveTime || 
+                (data.disableBlitz && tournamentUrlRegex.test(window.location.href))
+            ) {
                 debugLog('[checkActiveTime] redirecting');
                 window.location.replace("https://lichess.org/streak");
             } else {

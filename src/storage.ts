@@ -3,21 +3,21 @@ import { debugLog } from './util';
 import { ChessKeyData } from './data';
 
 export function setData(data: ChessKeyData) {
-    debugLog(`[setData]`);
-   // chessKeyData.dumpToLog();
+    //debugLog(`[setData]`);
+    //data.dumpToLog();
     browser.storage.sync.set({"chessKeyData" : data});
 }
 
 export async function getData() {
     return new Promise<ChessKeyData> (async function(resolve) {
-        debugLog(`[getData]`);
+        //debugLog(`[getData]`);
         let chessKeyData: ChessKeyData = new ChessKeyData();
         try {
             let chessKeyDataStore = await browser.storage.sync.get("chessKeyData");
             //let str = JSON.stringify(chessKeyDataStore);
             //debugLog(str);
             if (chessKeyDataStore?.chessKeyData != null) {
-                debugLog('data retrived');
+                //debugLog('data retrived');
                 chessKeyData = chessKeyDataStore.chessKeyData;
             }
         } catch (e) {
