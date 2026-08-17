@@ -2081,11 +2081,44 @@ function loadOptions() {
         });
     });
 }
+function breakOptions() {
+    return __awaiter(this, void 0, void 0, function () {
+        var data, expireTime, curTime, timeToBreak, e_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[breakOptions]');
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.getData)()];
+                case 1:
+                    data = _a.sent();
+                    expireTime = data.expireTime;
+                    curTime = Date.now();
+                    // if the expiretime was more than 90 minutes ago
+                    if (curTime - expireTime > 90 * 60 * 1000) {
+                        (0,_storage__WEBPACK_IMPORTED_MODULE_1__.addActiveMinutes)(5);
+                    }
+                    else {
+                        timeToBreak = 90 - Math.round((curTime - expireTime) / 60000);
+                        console.log("[breakOptions] time to next break [".concat(timeToBreak, "m]"));
+                    }
+                    (0,_storage__WEBPACK_IMPORTED_MODULE_1__.setData)(data);
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_3 = _a.sent();
+                    (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)(e_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
 function initOptionsIfAble() {
     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[initOptions]');
     if (document.getElementById('target-puzzle') != null && document.getElementById('disable-blitz') != null) {
         loadOptions();
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('save').addEventListener('click', saveOptions);
+        (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('break').addEventListener('click', breakOptions);
     }
     else {
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[initOptions] no options to init');
@@ -2281,6 +2314,92 @@ function checkHasActiveTime() {
 
 /***/ }),
 
+/***/ "./src/streak_rules.ts":
+/*!*****************************!*\
+  !*** ./src/streak_rules.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BAD_BEAT_MINUTES: () => (/* binding */ BAD_BEAT_MINUTES),
+/* harmony export */   BAD_BEAT_WINDOW: () => (/* binding */ BAD_BEAT_WINDOW),
+/* harmony export */   BONUS_INTERVAL: () => (/* binding */ BONUS_INTERVAL),
+/* harmony export */   StreakSession: () => (/* binding */ StreakSession),
+/* harmony export */   TARGET_MINUTES: () => (/* binding */ TARGET_MINUTES),
+/* harmony export */   parseScore: () => (/* binding */ parseScore)
+/* harmony export */ });
+/**
+ * Reads the score out of the streak panel's text.
+ *
+ * Returns null when there is nothing to read: the panel is torn down and rebuilt
+ * between puzzles, and treating that gap as a score of 0 looks exactly like a
+ * collapsed streak.
+ */
+function parseScore(raw) {
+    if (raw == null) {
+        return null;
+    }
+    var parsed = parseInt(raw, 10);
+    return isNaN(parsed) ? null : parsed;
+}
+var BAD_BEAT_WINDOW = 5;
+var BAD_BEAT_MINUTES = 5;
+var TARGET_MINUTES = 10;
+var BONUS_INTERVAL = 5;
+/**
+ * Scoring rules for one continuous run of the Lichess streak page.
+ *
+ * The previous score is held per session on purpose. A score lower than the one
+ * before it only means "the streak just ended" when both readings come from the
+ * same page session: a new streak page always renders 0, so comparing against a
+ * score carried over from an earlier session made the first puzzle of a new
+ * streak look like a collapse and handed out bad beat time for solving one easy
+ * puzzle.
+ */
+var StreakSession = /** @class */ (function () {
+    function StreakSession(startingScore, targetScore) {
+        this.prevScore = startingScore;
+        this.targetScore = targetScore;
+        this.targetAwarded = false;
+    }
+    StreakSession.prototype.onScore = function (curScore) {
+        // The page re-renders the score panel between puzzles, so the same score
+        // gets read back more than once. Only an actual change can earn time.
+        if (curScore == this.prevScore) {
+            return { streakEnded: false, minutes: 0, reason: '' };
+        }
+        var streakEnded = curScore < this.prevScore;
+        var minutes = 0;
+        var reason = '';
+        if (streakEnded && this.prevScore >= this.targetScore - BAD_BEAT_WINDOW) {
+            minutes = BAD_BEAT_MINUTES;
+            reason = 'BAD BEAT. Take a break';
+        }
+        if (curScore == this.targetScore && !this.targetAwarded) {
+            if (TARGET_MINUTES >= minutes) {
+                minutes = TARGET_MINUTES;
+                reason = 'HIT TARGET! KEEP GOING!';
+            }
+            this.targetAwarded = true;
+        }
+        if (curScore >= this.targetScore && curScore % BONUS_INTERVAL == 0) {
+            if (TARGET_MINUTES > minutes) {
+                minutes = TARGET_MINUTES;
+                reason = 'GO FOR GOLD!';
+            }
+        }
+        this.prevScore = curScore;
+        return { streakEnded: streakEnded, minutes: minutes, reason: reason };
+    };
+    return StreakSession;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/streak_tracker.ts":
 /*!*******************************!*\
   !*** ./src/streak_tracker.ts ***!
@@ -2294,6 +2413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ "./src/storage.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _streak_rules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./streak_rules */ "./src/streak_rules.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2333,46 +2453,35 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var scoreDivName = "puzzle__side__streak__score text";
 var activeScore = -1;
 var scoreCheckDelayMillis = 800;
-var targetScore = 30;
-var targetTimeAdded = false;
+var session = null;
 // region Active Score Tracker
-function onScoreChange() {
+function onScoreChange(curScore) {
     return __awaiter(this, void 0, void 0, function () {
-        var curScore, runningScore, data, error_1;
+        var award, data, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    curScore = getCurScore();
                     console.log("[onScoreChange] Current Score [".concat(curScore, "]"));
-                    runningScore = curScore;
+                    award = session.onScore(curScore);
+                    if (award.streakEnded) {
+                        console.log("[onScoreChange] STREAK OVER :(");
+                    }
+                    if (award.minutes > 0) {
+                        console.log("[onScoreChange] ".concat(award.reason));
+                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(award.minutes);
+                    }
                     return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getData)()];
                 case 1:
                     data = _a.sent();
-                    //console.log(`[onScoreChange] data currentScore [${data.currentScore}]`);
-                    if (curScore < data.currentScore) {
-                        console.log("[onScoreChange] STREAK OVER :(");
-                        if (data.currentScore >= data.targetScore - 5) {
-                            console.log("[onScoreChange] BAD BEAT. Take a break");
-                            (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
-                        }
-                    }
                     data.currentScore = curScore;
                     return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.setData)(data)];
                 case 2:
                     _a.sent();
-                    if (curScore == targetScore && targetTimeAdded == false) {
-                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
-                        console.log("[onScoreChange] HIT TARGET! KEEP GOING!");
-                        targetTimeAdded = true;
-                    }
-                    if (curScore >= targetScore && curScore % 5 == 0) {
-                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(10);
-                        console.log("[onScoreChange] GO FOR GOLD!");
-                    }
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
@@ -2413,22 +2522,20 @@ function getScoreDiv() {
     //debugLog('[getScoreDiv] DONE [' + isNotNull + ']');
     return scoreDiv;
 }
+// null means the score panel could not be read right now, which is not the same
+// thing as a score of 0 -- see parseScore
 function getCurScore() {
     var _a;
     //debugLog('[getCurScore] START');
-    var getCurScoreResult = 0;
     try {
         var curValueString = (_a = getScoreDiv()) === null || _a === void 0 ? void 0 : _a.innerHTML;
         //console.log(`[getCurScore] ${curValueString}`);
-        getCurScoreResult = parseInt(curValueString);
+        return (0,_streak_rules__WEBPACK_IMPORTED_MODULE_2__.parseScore)(curValueString);
     }
     catch (error) {
         console.error('[getCurScore] ERROR ' + error.toString());
+        return null;
     }
-    //debugLog('[getCurScore] pre-parsed [' + getCurScoreResult + ']');
-    getCurScoreResult = getCurScoreResult || 0;
-    //debugLog('[getCurScore] DONE [' + getCurScoreResult + ']');
-    return getCurScoreResult;
 }
 // Callback function to execute when mutations are observed
 var callback = function (mutationList, observer) {
@@ -2438,11 +2545,11 @@ var callback = function (mutationList, observer) {
             setTimeout(function () {
                 var mutatedScore = getCurScore();
                 //debugLog('[' + mutatedScore + '] [' + activeScore + ']');
-                if (mutatedScore != activeScore) {
+                if (mutatedScore != null && mutatedScore != activeScore) {
                     //debugLog('mutatedScore [' + mutatedScore + ']');
                     //debugLog('activeScore [' + activeScore + ']');
                     activeScore = mutatedScore;
-                    onScoreChange();
+                    onScoreChange(mutatedScore);
                 }
             }, scoreCheckDelayMillis);
         }
@@ -2453,18 +2560,20 @@ var config = { attributes: true, childList: true, subtree: true };
 // endregion
 function initStreakTracker() {
     return __awaiter(this, void 0, void 0, function () {
-        var observer;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var targetScore, observer;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[initStreakTracker] START");
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getTargetScore)()];
+                case 1:
+                    targetScore = _b.sent();
+                    activeScore = (_a = getCurScore()) !== null && _a !== void 0 ? _a : 0;
+                    session = new _streak_rules__WEBPACK_IMPORTED_MODULE_2__.StreakSession(activeScore, targetScore);
                     observer = new MutationObserver(callback);
                     // Start observing the target node for configured mutations
                     observer.observe(targetNode, config);
-                    activeScore = getCurScore();
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getTargetScore)()];
-                case 1:
-                    targetScore = _a.sent();
                     (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[initStreakTracker] DONE activeScore [".concat(activeScore, "] targetScore [").concat(targetScore, "]"));
                     return [2 /*return*/];
             }
@@ -2678,7 +2787,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 try {
-    console.log('TODO: curScore storage');
     console.log('TODO: time of day as an option');
     var mode = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getMode)();
     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("mode [".concat(mode, "]"));

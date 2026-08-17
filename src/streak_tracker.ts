@@ -2,44 +2,32 @@ import { getTargetScore, addActiveMinutes } from './storage';
 import { debugLog } from './util';
 import { getData, setData } from './storage';
 import { ChessKeyData } from './data';
+import { StreakSession, parseScore } from './streak_rules';
 
 const scoreDivName = "puzzle__side__streak__score text";
 var activeScore = -1;
 const scoreCheckDelayMillis = 800;
-let targetScore = 30;
-let targetTimeAdded = false;
+let session: StreakSession | null = null;
 
 // region Active Score Tracker
-async function onScoreChange() {
+async function onScoreChange(curScore: number) {
     //debugLog("[onScoreChange] START");
     try {
-        let curScore = getCurScore();
         console.log(`[onScoreChange] Current Score [${curScore}]`);
-        let runningScore = curScore;
-        
-        // update the currentscore
-        let data: ChessKeyData = await getData();
-        //console.log(`[onScoreChange] data currentScore [${data.currentScore}]`);
-        if (curScore < data.currentScore) {
+
+        let award = session!.onScore(curScore);
+        if (award.streakEnded) {
             console.log("[onScoreChange] STREAK OVER :(");
-            if (data.currentScore >= data.targetScore - 5) {
-                console.log("[onScoreChange] BAD BEAT. Take a break");
-                addActiveMinutes(5);
-            }
-        } 
+        }
+        if (award.minutes > 0) {
+            console.log(`[onScoreChange] ${award.reason}`);
+            addActiveMinutes(award.minutes);
+        }
+
+        // keep the stored score in step with the page for the options/debug view
+        let data: ChessKeyData = await getData();
         data.currentScore = curScore;
         await setData(data);
-
-        if (curScore == targetScore && targetTimeAdded == false) {
-            addActiveMinutes(10);
-            console.log("[onScoreChange] HIT TARGET! KEEP GOING!");
-            targetTimeAdded = true;
-        }
-
-        if (curScore >= targetScore && curScore % 5 == 0) {
-            addActiveMinutes(10);
-            console.log("[onScoreChange] GO FOR GOLD!");
-        }
 
     } catch (error) {
         console.log(`[onScoreChange] ${error.toString()}`);
@@ -77,20 +65,18 @@ function getScoreDiv() {
     return scoreDiv;
 }
 
-function getCurScore() {
+// null means the score panel could not be read right now, which is not the same
+// thing as a score of 0 -- see parseScore
+function getCurScore(): number | null {
     //debugLog('[getCurScore] START');
-    let getCurScoreResult = 0;
     try {
         let curValueString = (getScoreDiv() as HTMLElement)?.innerHTML;
         //console.log(`[getCurScore] ${curValueString}`);
-        getCurScoreResult = parseInt(curValueString);
+        return parseScore(curValueString);
     } catch (error) {
         console.error('[getCurScore] ERROR ' + error.toString());
+        return null;
     }
-    //debugLog('[getCurScore] pre-parsed [' + getCurScoreResult + ']');
-    getCurScoreResult = getCurScoreResult || 0;
-    //debugLog('[getCurScore] DONE [' + getCurScoreResult + ']');
-    return getCurScoreResult;
 }
 
 // Callback function to execute when mutations are observed
@@ -101,11 +87,11 @@ const callback = (mutationList: MutationRecord[], observer: MutationObserver) =>
                 function() {
                     let mutatedScore = getCurScore();
                     //debugLog('[' + mutatedScore + '] [' + activeScore + ']');
-                    if (mutatedScore != activeScore) {
+                    if (mutatedScore != null && mutatedScore != activeScore) {
                         //debugLog('mutatedScore [' + mutatedScore + ']');
                         //debugLog('activeScore [' + activeScore + ']');
                         activeScore = mutatedScore;
-                        onScoreChange();
+                        onScoreChange(mutatedScore);
                     }
                 },
                 scoreCheckDelayMillis
@@ -122,14 +108,18 @@ const config = { attributes: true, childList: true, subtree: true };
 export async function initStreakTracker() {
     debugLog("[initStreakTracker] START");
 
+    // Baseline off the score this page is actually showing. A streak lives and dies
+    // inside one page session, so a score carried over from an earlier session says
+    // nothing about whether this streak is still alive.
+    let targetScore = await getTargetScore();
+    activeScore = getCurScore() ?? 0;
+    session = new StreakSession(activeScore, targetScore);
+
     // Create an observer instance linked to the callback function
     const observer = new MutationObserver(callback);
 
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
-
-    activeScore = getCurScore();
-    targetScore = await getTargetScore();
 
     debugLog(`[initStreakTracker] DONE activeScore [${activeScore}] targetScore [${targetScore}]`);
 }

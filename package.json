@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "test": "node --experimental-strip-types --disable-warning=ExperimentalWarning --test test/streak_rules.test.ts"
   },
   "keywords": [],
   "author": "",
