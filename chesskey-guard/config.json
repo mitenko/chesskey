@@ -1,0 +1,6 @@
+{
+  "unlockDelayHours": 24,
+  "extensionId": "altersonic@yahoo.com",
+  "installUrl": "https://addons.mozilla.org/firefox/downloads/latest/chesskey/latest.xpi",
+  "blockedHost": "lichess.org"
+}
