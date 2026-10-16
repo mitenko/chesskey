@@ -78,7 +78,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.chesskey-option-body {
 }
 .chesskey-option-btn:focus {
   outline: 0;
-}`, "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAIA;EACE,yBALc;EAMd,iCAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,aAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;AAHF;;AAMA;EACE,YAAA;EACA,cAAA;AAHF;;AAMA;EACE,yBAtBgB;EAuBhB,mBAAA;EACA,wEAvBW;EAwBX,kBAAA;EACA,kBAAA;EACA,eAAA;EACA,YAAA;AAHF;;AAMA;EACE,SAAA;EACA,mBAAA;EACA,eAAA;AAHF;;AAMA;EACE,eAAA;EACA,mBAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;AAHF;;AAMA;EACE,yBAAA;EACA,cA/CgB;EAgDhB,SAAA;EACA,mBAAA;EACA,uEAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;AAHF;AAKE;EACE,sBAAA;AAHJ;AAME;EACE,UAAA;AAJJ","sourcesContent":["$primary-color: #a8a8a8;\r\n$secondary-color: #f4f4f4;\r\n$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n\r\n.chesskey-option-body {\r\n  background-color: $primary-color;\r\n  font-family: 'Roboto', sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  margin: 0;\r\n  padding: 20px;\r\n}\r\n\r\n.chesskey-option-input {\r\n  margin: auto;\r\n  display: block;\r\n}\r\n\r\n.chesskey-option-container {\r\n  background-color: $secondary-color;\r\n  border-radius: 10px;\r\n  box-shadow: $box-shadow;\r\n  padding: 50px 20px;\r\n  text-align: center;\r\n  max-width: 100%;\r\n  width: 800px;\r\n}\r\n\r\n.chesskey-option-h3 {\r\n  margin: 0;\r\n  letter-spacing: 2px;\r\n  font-size: 16px;\r\n}\r\n\r\n.chesskey-option-content {\r\n  font-size: 16px;\r\n  letter-spacing: 1px;\r\n  line-height: 40px;\r\n  margin: 50px auto;\r\n  max-width: 600px;\r\n}\r\n\r\n.chesskey-option-btn {\r\n  background-color: #1c8cab;\r\n  color: $secondary-color;\r\n  border: 0;\r\n  border-radius: 10px;\r\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n  padding: 14px 40px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n\r\n  &:active {\r\n    transform: scale(0.98);\r\n  }\r\n\r\n  &:focus {\r\n    outline: 0;\r\n  }\r\n}"],"sourceRoot":""}]);
+}
+
+.chesskey-event-log {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+  max-height: 400px;
+  overflow: auto;
+  white-space: pre-wrap;
+  text-align: left;
+}`, "",{"version":3,"sources":["webpack://./src/styles/main.scss"],"names":[],"mappings":"AAIA;EACE,yBALc;EAMd,iCAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;EACA,aAAA;EACA,gBAAA;EACA,SAAA;EACA,aAAA;AAHF;;AAMA;EACE,YAAA;EACA,cAAA;AAHF;;AAMA;EACE,yBAtBgB;EAuBhB,mBAAA;EACA,wEAvBW;EAwBX,kBAAA;EACA,kBAAA;EACA,eAAA;EACA,YAAA;AAHF;;AAMA;EACE,SAAA;EACA,mBAAA;EACA,eAAA;AAHF;;AAMA;EACE,eAAA;EACA,mBAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;AAHF;;AAMA;EACE,yBAAA;EACA,cA/CgB;EAgDhB,SAAA;EACA,mBAAA;EACA,uEAAA;EACA,kBAAA;EACA,eAAA;EACA,eAAA;AAHF;AAKE;EACE,sBAAA;AAHJ;AAME;EACE,UAAA;AAJJ;;AAOA;EACE,eAAA;EACA,iBAAA;EACA,iBAAA;EACA,iBAAA;EACA,cAAA;EACA,qBAAA;EACA,gBAAA;AAJF","sourcesContent":["$primary-color: #a8a8a8;\r\n$secondary-color: #f4f4f4;\r\n$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n\r\n.chesskey-option-body {\r\n  background-color: $primary-color;\r\n  font-family: 'Roboto', sans-serif;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  margin: 0;\r\n  padding: 20px;\r\n}\r\n\r\n.chesskey-option-input {\r\n  margin: auto;\r\n  display: block;\r\n}\r\n\r\n.chesskey-option-container {\r\n  background-color: $secondary-color;\r\n  border-radius: 10px;\r\n  box-shadow: $box-shadow;\r\n  padding: 50px 20px;\r\n  text-align: center;\r\n  max-width: 100%;\r\n  width: 800px;\r\n}\r\n\r\n.chesskey-option-h3 {\r\n  margin: 0;\r\n  letter-spacing: 2px;\r\n  font-size: 16px;\r\n}\r\n\r\n.chesskey-option-content {\r\n  font-size: 16px;\r\n  letter-spacing: 1px;\r\n  line-height: 40px;\r\n  margin: 50px auto;\r\n  max-width: 600px;\r\n}\r\n\r\n.chesskey-option-btn {\r\n  background-color: #1c8cab;\r\n  color: $secondary-color;\r\n  border: 0;\r\n  border-radius: 10px;\r\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);\r\n  padding: 14px 40px;\r\n  font-size: 16px;\r\n  cursor: pointer;\r\n\r\n  &:active {\r\n    transform: scale(0.98);\r\n  }\r\n\r\n  &:focus {\r\n    outline: 0;\r\n  }\r\n}\n.chesskey-event-log {\n  font-size: 12px;\n  line-height: 18px;\n  letter-spacing: 0;\n  max-height: 400px;\n  overflow: auto;\n  white-space: pre-wrap;\n  text-align: left;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1790,6 +1800,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storage */ "./src/storage.ts");
+/* harmony import */ var _event_log__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_log */ "./src/event_log.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1829,13 +1840,14 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 function checkActiveTime() {
     return __awaiter(this, void 0, void 0, function () {
         var now, hours, minutes, data, hasActiveTime, tournamentUrlRegex, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 4, 5, 6]);
+                    _a.trys.push([0, 5, 6, 7]);
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] START');
                     now = new Date();
                     hours = now.getHours();
@@ -1852,22 +1864,28 @@ function checkActiveTime() {
                     // if is tournament page redirect always
                     if (!hasActiveTime ||
                         (data.disableBlitz && tournamentUrlRegex.test(window.location.href))) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)("game page LOCKED, redirecting to /streak: unlocked until ".concat((0,_event_log__WEBPACK_IMPORTED_MODULE_2__.formatTime)(data.expireTime)) +
+                            ", hasActiveTime ".concat(hasActiveTime, ", last stored score ").concat(data.currentScore));
                         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] redirecting');
                         window.location.replace("https://lichess.org/streak");
                     }
                     else {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)("game page unlocked until ".concat((0,_event_log__WEBPACK_IMPORTED_MODULE_2__.formatTime)(data.expireTime)));
                         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] proceed');
                     }
-                    _a.label = 3;
-                case 3: return [3 /*break*/, 6];
-                case 4:
-                    error_1 = _a.sent();
-                    console.error("[checkActiveTime] ".concat(error_1.toString()));
-                    return [3 /*break*/, 6];
+                    return [3 /*break*/, 4];
+                case 3:
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)("game page open outside locked hours (6:00-17:00)");
+                    _a.label = 4;
+                case 4: return [3 /*break*/, 7];
                 case 5:
+                    error_1 = _a.sent();
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logError)('checkActiveTime', error_1);
+                    return [3 /*break*/, 7];
+                case 6:
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[checkActiveTime] DONE');
                     return [7 /*endfinally*/];
-                case 6: return [2 /*return*/];
+                case 7: return [2 /*return*/];
             }
         });
     });
@@ -1958,16 +1976,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ChessKeyData: () => (/* binding */ ChessKeyData)
 /* harmony export */ });
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _streak_rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./streak_rules */ "./src/streak_rules.ts");
+
 
 var ChessKeyData = /** @class */ (function () {
-    function ChessKeyData(targetScore, expireTime, disableBlitz, currentScore) {
+    function ChessKeyData(targetScore, expireTime, disableBlitz, currentScore, paidRung) {
         this.targetScore = targetScore !== null && targetScore !== void 0 ? targetScore : 40;
         this.expireTime = expireTime !== null && expireTime !== void 0 ? expireTime : 0;
         this.disableBlitz = disableBlitz !== null && disableBlitz !== void 0 ? disableBlitz : false;
         this.currentScore = currentScore !== null && currentScore !== void 0 ? currentScore : 0;
+        this.paidRung = paidRung !== null && paidRung !== void 0 ? paidRung : _streak_rules__WEBPACK_IMPORTED_MODULE_1__.NO_RUNG_PAID;
     }
     ChessKeyData.prototype.dumpToLog = function () {
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] currentScore [".concat(this.currentScore, "]"));
+        (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] paidRung [".concat(this.paidRung, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] targetScore [".concat(this.targetScore, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] expireTime [".concat(this.expireTime, "]"));
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("[dumpToLog] disableBlitz [".concat(this.disableBlitz, "]"));
@@ -1976,6 +1998,87 @@ var ChessKeyData = /** @class */ (function () {
 }());
 
 ;
+
+
+/***/ }),
+
+/***/ "./src/event_log.ts":
+/*!**************************!*\
+  !*** ./src/event_log.ts ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clearEventLog: () => (/* binding */ clearEventLog),
+/* harmony export */   formatTime: () => (/* binding */ formatTime),
+/* harmony export */   logError: () => (/* binding */ logError),
+/* harmony export */   logEvent: () => (/* binding */ logEvent),
+/* harmony export */   readEventLog: () => (/* binding */ readEventLog),
+/* harmony export */   watchStorageChanges: () => (/* binding */ watchStorageChanges)
+/* harmony export */ });
+/* harmony import */ var webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webextension-polyfill-ts */ "./node_modules/webextension-polyfill-ts/lib/index.js");
+/* harmony import */ var _storage_queue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storage_queue */ "./src/storage_queue.ts");
+
+
+/**
+ * A persistent record of what the extension saw and decided, for working out after
+ * the fact why games did or did not unlock.
+ *
+ * The console is no use for that: it is cleared on every page load, and a missed
+ * unlock is exactly what triggers one -- the active time check bounces the game page
+ * back to /streak. This log lives in storage.local and survives reloads. Read it from
+ * the Options page.
+ */
+var LOG_KEY = 'chessKeyEventLog';
+var MAX_ENTRIES = 1000;
+// Appends and Clear share one queue, so two events logged back to back cannot drop
+// each other and a queued append cannot land after a Clear. Ordering is per page;
+// two lichess tabs logging at the same instant can still lose an entry.
+var logStore = (0,_storage_queue__WEBPACK_IMPORTED_MODULE_1__.createLogStore)(webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.local, LOG_KEY, MAX_ENTRIES);
+function logEvent(msg) {
+    console.log("[event] ".concat(msg));
+    var entry = { time: Date.now(), page: window.location.pathname, msg: msg };
+    logStore.append(entry).catch(function (error) { return console.error("[logEvent] ".concat(error)); });
+}
+function logError(where, error) {
+    var _a;
+    console.error("[".concat(where, "] ").concat(error));
+    logEvent("ERROR in ".concat(where, ": ").concat((_a = error === null || error === void 0 ? void 0 : error.stack) !== null && _a !== void 0 ? _a : error));
+}
+/**
+ * Records every change to the unlock expiry and the target, whoever made it, with the
+ * value before and after. An award that is written and then quietly put back shows
+ * up here as an expiry that moves forward and then straight back.
+ */
+function watchStorageChanges() {
+    webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.onChanged.addListener(function (changes, area) {
+        var _a, _b, _c, _d, _e, _f;
+        var change = changes['chessKeyData'];
+        if (area != 'sync' || change == null) {
+            return;
+        }
+        var before = (_a = change.oldValue) !== null && _a !== void 0 ? _a : {};
+        var after = (_b = change.newValue) !== null && _b !== void 0 ? _b : {};
+        if (before.expireTime != after.expireTime) {
+            var direction = ((_c = after.expireTime) !== null && _c !== void 0 ? _c : 0) < ((_d = before.expireTime) !== null && _d !== void 0 ? _d : 0) ? ' (MOVED BACKWARDS)' : '';
+            logEvent("stored unlock changed ".concat(formatTime((_e = before.expireTime) !== null && _e !== void 0 ? _e : 0), " -> ").concat(formatTime((_f = after.expireTime) !== null && _f !== void 0 ? _f : 0)).concat(direction));
+        }
+        if (before.targetScore != after.targetScore) {
+            logEvent("stored target changed ".concat(before.targetScore, " -> ").concat(after.targetScore));
+        }
+    });
+}
+function readEventLog() {
+    return logStore.read();
+}
+function clearEventLog() {
+    return logStore.clear();
+}
+function formatTime(millis) {
+    return millis > 0 ? new Date(millis).toLocaleString() : 'never';
+}
 
 
 /***/ }),
@@ -1993,6 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./storage */ "./src/storage.ts");
+/* harmony import */ var _event_log__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event_log */ "./src/event_log.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2032,22 +2136,65 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+function showEventLog() {
+    return __awaiter(this, void 0, void 0, function () {
+        var entries, lines;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.readEventLog)()];
+                case 1:
+                    entries = _a.sent();
+                    lines = entries.slice().reverse().map(function (e) { return "".concat((0,_event_log__WEBPACK_IMPORTED_MODULE_2__.formatTime)(e.time), "  ").concat(e.page, "  ").concat(e.msg); });
+                    document.getElementById('event-log').textContent = lines.length > 0 ? lines.join('\n') : '(empty)';
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function initEventLogView() {
+    var _this = this;
+    showEventLog();
+    (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('event-log-refresh').addEventListener('click', showEventLog);
+    (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('event-log-copy').addEventListener('click', function () {
+        var _a;
+        navigator.clipboard.writeText((_a = document.getElementById('event-log').textContent) !== null && _a !== void 0 ? _a : '');
+    });
+    (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('event-log-clear').addEventListener('click', function () { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.clearEventLog)()];
+                case 1:
+                    _a.sent();
+                    showEventLog();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+}
 function saveOptions() {
     return __awaiter(this, void 0, void 0, function () {
-        var targetPuzzle, disableBlitz, data, e_1;
+        var targetPuzzle_1, disableBlitz_1, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[saveOptions]');
-                    targetPuzzle = parseInt((0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('target-puzzle').value);
-                    disableBlitz = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('disable-blitz').checked;
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.getData)()];
+                    targetPuzzle_1 = parseInt((0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('target-puzzle').value);
+                    disableBlitz_1 = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('disable-blitz').checked;
+                    // An empty or non-numeric target would be saved as null, and a null target
+                    // pays on every new streak page.
+                    if (!Number.isInteger(targetPuzzle_1) || targetPuzzle_1 < 1) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)("options NOT saved: target \"".concat((0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('target-puzzle').value, "\" is not a whole number of at least 1"));
+                        return [2 /*return*/];
+                    }
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.updateData)(function (data) {
+                            (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)("options saved: target ".concat(data.targetScore, " -> ").concat(targetPuzzle_1, ", disableBlitz ").concat(data.disableBlitz, " -> ").concat(disableBlitz_1));
+                            data.targetScore = targetPuzzle_1;
+                            data.disableBlitz = disableBlitz_1;
+                        })];
                 case 1:
-                    data = _a.sent();
-                    data.targetScore = targetPuzzle;
-                    data.disableBlitz = disableBlitz;
-                    (0,_storage__WEBPACK_IMPORTED_MODULE_1__.setData)(data);
+                    _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
                     e_1 = _a.sent();
@@ -2083,32 +2230,32 @@ function loadOptions() {
 }
 function breakOptions() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, expireTime, curTime, timeToBreak, e_3;
+        var expireTime, curTime, timeToBreak, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
+                    _a.trys.push([0, 5, , 6]);
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[breakOptions]');
                     return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.getData)()];
                 case 1:
-                    data = _a.sent();
-                    expireTime = data.expireTime;
+                    expireTime = (_a.sent()).expireTime;
                     curTime = Date.now();
-                    // if the expiretime was more than 90 minutes ago
-                    if (curTime - expireTime > 90 * 60 * 1000) {
-                        (0,_storage__WEBPACK_IMPORTED_MODULE_1__.addActiveMinutes)(5);
-                    }
-                    else {
-                        timeToBreak = 90 - Math.round((curTime - expireTime) / 60000);
-                        console.log("[breakOptions] time to next break [".concat(timeToBreak, "m]"));
-                    }
-                    (0,_storage__WEBPACK_IMPORTED_MODULE_1__.setData)(data);
-                    return [3 /*break*/, 3];
+                    if (!(curTime - expireTime > 90 * 60 * 1000)) return [3 /*break*/, 3];
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_2__.logEvent)('take a break: +5m');
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_1__.addActiveMinutes)(5)];
                 case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    timeToBreak = 90 - Math.round((curTime - expireTime) / 60000);
+                    console.log("[breakOptions] time to next break [".concat(timeToBreak, "m]"));
+                    _a.label = 4;
+                case 4: return [3 /*break*/, 6];
+                case 5:
                     e_3 = _a.sent();
                     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)(e_3);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 6];
+                case 6: return [2 /*return*/];
             }
         });
     });
@@ -2119,6 +2266,7 @@ function initOptionsIfAble() {
         loadOptions();
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('save').addEventListener('click', saveOptions);
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.getInputElement)('break').addEventListener('click', breakOptions);
+        initEventLogView();
     }
     else {
         (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)('[initOptions] no options to init');
@@ -2141,12 +2289,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   checkHasActiveTime: () => (/* binding */ checkHasActiveTime),
 /* harmony export */   getData: () => (/* binding */ getData),
 /* harmony export */   getDisableBlitz: () => (/* binding */ getDisableBlitz),
-/* harmony export */   getTargetScore: () => (/* binding */ getTargetScore),
-/* harmony export */   setData: () => (/* binding */ setData)
+/* harmony export */   readData: () => (/* binding */ readData),
+/* harmony export */   saveStreakState: () => (/* binding */ saveStreakState),
+/* harmony export */   updateData: () => (/* binding */ updateData)
 /* harmony export */ });
 /* harmony import */ var webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webextension-polyfill-ts */ "./node_modules/webextension-polyfill-ts/lib/index.js");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 /* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data */ "./src/data.ts");
+/* harmony import */ var _storage_queue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage_queue */ "./src/storage_queue.ts");
+/* harmony import */ var _event_log__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./event_log */ "./src/event_log.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2186,129 +2337,381 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-function setData(data) {
-    //debugLog(`[setData]`);
-    //data.dumpToLog();
-    webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.sync.set({ "chessKeyData": data });
-}
-function getData() {
+
+
+var AWARD_VERIFY_DELAY_MILLIS = 3000;
+var READ_ATTEMPTS = 3;
+var READ_RETRY_DELAY_MILLIS = 500;
+// Every write goes through this one queue -- see storage_queue.ts for the lost-update
+// race it exists to prevent. Only this page's writes are ordered; two lichess tabs
+// writing at the same instant can still race.
+var dataStore = (0,_storage_queue__WEBPACK_IMPORTED_MODULE_3__.createDataStore)(webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.sync, 'chessKeyData', function () { return new _data__WEBPACK_IMPORTED_MODULE_2__.ChessKeyData(); });
+function updateData(mutate) {
     return __awaiter(this, void 0, void 0, function () {
+        var error_1;
         return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve) {
-                    return __awaiter(this, void 0, void 0, function () {
-                        var chessKeyData, chessKeyDataStore, e_1;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    chessKeyData = new _data__WEBPACK_IMPORTED_MODULE_2__.ChessKeyData();
-                                    _a.label = 1;
-                                case 1:
-                                    _a.trys.push([1, 3, , 4]);
-                                    return [4 /*yield*/, webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_0__.browser.storage.sync.get("chessKeyData")];
-                                case 2:
-                                    chessKeyDataStore = _a.sent();
-                                    //let str = JSON.stringify(chessKeyDataStore);
-                                    //debugLog(str);
-                                    if ((chessKeyDataStore === null || chessKeyDataStore === void 0 ? void 0 : chessKeyDataStore.chessKeyData) != null) {
-                                        //debugLog('data retrived');
-                                        chessKeyData = chessKeyDataStore.chessKeyData;
-                                    }
-                                    return [3 /*break*/, 4];
-                                case 3:
-                                    e_1 = _a.sent();
-                                    console.error(e_1);
-                                    return [3 /*break*/, 4];
-                                case 4:
-                                    resolve(chessKeyData);
-                                    return [2 /*return*/];
-                            }
-                        });
-                    });
-                })];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, dataStore.update(mutate)];
+                case 1: return [2 /*return*/, _a.sent()];
+                case 2:
+                    error_1 = _a.sent();
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logError)('updateData', error_1);
+                    throw error_1;
+                case 3: return [2 /*return*/];
+            }
         });
     });
 }
-function getTargetScore() {
+/**
+ * For decisions that feed a write, such as the streak page's target and paid rung.
+ * Retries a failing read, then rejects: falling back to the defaults here would pay
+ * at the default target and forget the paid rung.
+ */
+function readData() {
     return __awaiter(this, void 0, void 0, function () {
+        var error_2;
         return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve) {
-                    return __awaiter(this, void 0, void 0, function () {
-                        var chessKeyData, targetScore;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, getData()];
-                                case 1:
-                                    chessKeyData = _a.sent();
-                                    targetScore = chessKeyData.targetScore;
-                                    return [2 /*return*/, resolve(targetScore)];
-                            }
-                        });
-                    });
-                })];
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0,_storage_queue__WEBPACK_IMPORTED_MODULE_3__.retry)(function () { return dataStore.read(); }, READ_ATTEMPTS, READ_RETRY_DELAY_MILLIS)];
+                case 1: return [2 /*return*/, _a.sent()];
+                case 2:
+                    error_2 = _a.sent();
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logError)('readData', error_2);
+                    throw error_2;
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * For display and for decisions that write nothing. A failed read falls back to the
+ * defaults, which reads as "locked" -- never base a write on the result, use
+ * updateData.
+ */
+function getData() {
+    return __awaiter(this, void 0, void 0, function () {
+        var error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, dataStore.read()];
+                case 1: return [2 /*return*/, _a.sent()];
+                case 2:
+                    error_3 = _a.sent();
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logError)('getData', error_3);
+                    return [2 /*return*/, new _data__WEBPACK_IMPORTED_MODULE_2__.ChessKeyData()];
+                case 3: return [2 /*return*/];
+            }
         });
     });
 }
 function getDisableBlitz() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve) {
-                    return __awaiter(this, void 0, void 0, function () {
-                        var chessKeyData, disableBlitz;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, getData()];
-                                case 1:
-                                    chessKeyData = _a.sent();
-                                    disableBlitz = chessKeyData.disableBlitz;
-                                    return [2 /*return*/, resolve(disableBlitz)];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getData()];
+                case 1: return [2 /*return*/, (_a.sent()).disableBlitz];
+            }
+        });
+    });
+}
+/**
+ * Applies `mutate` and, when minutes > 0, unlocks games until now + minutes, all in
+ * one write. "AWARD WRITTEN" is only logged once that write has succeeded.
+ */
+function writeAward(minutes, mutate) {
+    return __awaiter(this, void 0, void 0, function () {
+        var expireTime, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    expireTime = Date.now() + (minutes * 60 * 1000);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, updateData(function (data) {
+                            mutate(data);
+                            if (minutes > 0) {
+                                data.expireTime = expireTime;
                             }
-                        });
-                    });
-                })];
+                        })];
+                case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_4 = _a.sent();
+                    if (minutes > 0) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logEvent)("AWARD WRITE FAILED +".concat(minutes, "m: ").concat(error_4));
+                    }
+                    throw error_4;
+                case 4:
+                    if (minutes > 0) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logEvent)("AWARD WRITTEN +".concat(minutes, "m, games unlocked until ").concat((0,_event_log__WEBPACK_IMPORTED_MODULE_4__.formatTime)(expireTime)));
+                        setTimeout(function () { return verifyAward(expireTime); }, AWARD_VERIFY_DELAY_MILLIS);
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+// Kept from the investigation into lost awards: if anything still writes a stale
+// expireTime back (another tab, a future writer), this says so.
+function verifyAward(expireTime) {
+    return __awaiter(this, void 0, void 0, function () {
+        var after;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getData()];
+                case 1:
+                    after = _a.sent();
+                    if (after.expireTime < expireTime) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logEvent)("AWARD LOST: expireTime was overwritten back to ".concat((0,_event_log__WEBPACK_IMPORTED_MODULE_4__.formatTime)(after.expireTime)));
+                    }
+                    else {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_4__.logEvent)("award verified, unlocked until ".concat((0,_event_log__WEBPACK_IMPORTED_MODULE_4__.formatTime)(after.expireTime)));
+                    }
+                    return [2 /*return*/];
+            }
         });
     });
 }
 function addActiveMinutes(minutes) {
-    var curTime = Date.now();
-    var expireTime = curTime + (minutes * 60 * 1000);
     (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[addActiveMinutes] Adding ".concat(minutes, " minutes"));
-    getData().then(function (chessKeyData) {
-        chessKeyData.expireTime = expireTime;
-        setData(chessKeyData);
+    return writeAward(minutes, function () { });
+}
+/** One write for a score reading: the score, the paid rung and any award together. */
+function saveStreakState(score, paidRung, awardMinutes) {
+    return writeAward(awardMinutes, function (data) {
+        data.currentScore = score;
+        data.paidRung = paidRung;
     });
 }
 function checkHasActiveTime() {
     return __awaiter(this, void 0, void 0, function () {
+        var expireTime, curTime;
         return __generator(this, function (_a) {
-            return [2 /*return*/, new Promise(function (resolve) {
-                    return __awaiter(this, void 0, void 0, function () {
-                        var hasActiveTime, chessKeyData, expireTime, curTime, e_2;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    hasActiveTime = false;
-                                    _a.label = 1;
-                                case 1:
-                                    _a.trys.push([1, 3, , 4]);
-                                    return [4 /*yield*/, getData()];
-                                case 2:
-                                    chessKeyData = _a.sent();
-                                    expireTime = chessKeyData.expireTime;
-                                    curTime = Date.now();
-                                    (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[checkHasActiveTime] expireTime [".concat(expireTime, "] >= curTime [").concat(curTime, "]"));
-                                    hasActiveTime = expireTime >= curTime;
-                                    return [3 /*break*/, 4];
-                                case 3:
-                                    e_2 = _a.sent();
-                                    console.error(e_2);
-                                    return [3 /*break*/, 4];
-                                case 4: return [2 /*return*/, resolve(hasActiveTime)];
-                            }
-                        });
-                    });
-                })];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getData()];
+                case 1:
+                    expireTime = (_a.sent()).expireTime;
+                    curTime = Date.now();
+                    (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[checkHasActiveTime] expireTime [".concat(expireTime, "] >= curTime [").concat(curTime, "]"));
+                    return [2 /*return*/, expireTime >= curTime];
+            }
         });
     });
+}
+
+
+/***/ }),
+
+/***/ "./src/storage_queue.ts":
+/*!******************************!*\
+  !*** ./src/storage_queue.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createDataStore: () => (/* binding */ createDataStore),
+/* harmony export */   createLogStore: () => (/* binding */ createLogStore),
+/* harmony export */   createQueue: () => (/* binding */ createQueue),
+/* harmony export */   retry: () => (/* binding */ retry)
+/* harmony export */ });
+/**
+ * Serialized read-modify-write over a browser storage area.
+ *
+ * Writers used to save a whole object they had read earlier, so whichever save
+ * landed last put back every field the others had just changed -- including a
+ * freshly awarded unlock. Here every change reads fresh data, applies itself and
+ * waits for its save before the next change starts.
+ *
+ * No browser imports on purpose: the node test runner drives this module directly
+ * with a fake storage area whose calls are slow enough to overlap.
+ */
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+/**
+ * Runs jobs one at a time, in the order they were queued. A job that fails rejects
+ * its own promise but does not stop the jobs queued after it.
+ */
+function createQueue() {
+    var tail = Promise.resolve();
+    return function enqueue(job) {
+        var result = tail.then(job);
+        tail = result.catch(function () { });
+        return result;
+    };
+}
+/**
+ * Runs `job` up to `attempts` times, waiting `delayMillis` between tries, and returns
+ * the first success. Rejects with the last error once the attempts run out.
+ */
+function retry(job, attempts, delayMillis) {
+    return __awaiter(this, void 0, void 0, function () {
+        var lastError, attempt, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    attempt = 1;
+                    _a.label = 1;
+                case 1:
+                    if (!(attempt <= attempts)) return [3 /*break*/, 8];
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, , 7]);
+                    return [4 /*yield*/, job()];
+                case 3: return [2 /*return*/, _a.sent()];
+                case 4:
+                    error_1 = _a.sent();
+                    lastError = error_1;
+                    if (!(attempt < attempts)) return [3 /*break*/, 6];
+                    return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(resolve, delayMillis); })];
+                case 5:
+                    _a.sent();
+                    _a.label = 6;
+                case 6: return [3 /*break*/, 7];
+                case 7:
+                    attempt++;
+                    return [3 /*break*/, 1];
+                case 8: throw lastError;
+            }
+        });
+    });
+}
+function createDataStore(area, key, makeDefault) {
+    var enqueue = createQueue();
+    // Fields added since the object was stored (paidRung, for data saved by 2.1.1)
+    // come from the defaults instead of reading as undefined, and so does a stored
+    // null -- a NaN saved from an empty Options field comes back as null.
+    function read() {
+        return __awaiter(this, void 0, void 0, function () {
+            var stored, data, _i, _a, _b, field, value;
+            var _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0: return [4 /*yield*/, area.get(key)];
+                    case 1:
+                        stored = _d.sent();
+                        data = makeDefault();
+                        for (_i = 0, _a = Object.entries((_c = stored === null || stored === void 0 ? void 0 : stored[key]) !== null && _c !== void 0 ? _c : {}); _i < _a.length; _i++) {
+                            _b = _a[_i], field = _b[0], value = _b[1];
+                            if (value != null) {
+                                data[field] = value;
+                            }
+                        }
+                        return [2 /*return*/, data];
+                }
+            });
+        });
+    }
+    // A failed read rejects before anything is written, so defaults can never be
+    // saved over real data.
+    function update(mutate) {
+        var _this = this;
+        return enqueue(function () { return __awaiter(_this, void 0, void 0, function () {
+            var data;
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, read()];
+                    case 1:
+                        data = _b.sent();
+                        mutate(data);
+                        return [4 /*yield*/, area.set((_a = {}, _a[key] = data, _a))];
+                    case 2:
+                        _b.sent();
+                        return [2 /*return*/, data];
+                }
+            });
+        }); });
+    }
+    return { read: read, update: update };
+}
+function createLogStore(area, key, maxEntries) {
+    var enqueue = createQueue();
+    function read() {
+        return __awaiter(this, void 0, void 0, function () {
+            var stored;
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, area.get(key)];
+                    case 1:
+                        stored = _b.sent();
+                        return [2 /*return*/, (_a = stored === null || stored === void 0 ? void 0 : stored[key]) !== null && _a !== void 0 ? _a : []];
+                }
+            });
+        });
+    }
+    function append(entry) {
+        var _this = this;
+        return enqueue(function () { return __awaiter(_this, void 0, void 0, function () {
+            var entries;
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, read()];
+                    case 1:
+                        entries = _b.sent();
+                        entries.push(entry);
+                        if (entries.length > maxEntries) {
+                            entries = entries.slice(-maxEntries);
+                        }
+                        return [4 /*yield*/, area.set((_a = {}, _a[key] = entries, _a))];
+                    case 2:
+                        _b.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    }
+    // Queued like a write, so an append already in flight cannot land after the
+    // clear and bring the old entries back.
+    function clear() {
+        return enqueue(function () { return area.remove(key); });
+    }
+    return { read: read, append: append, clear: clear };
 }
 
 
@@ -2326,6 +2729,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BAD_BEAT_MINUTES: () => (/* binding */ BAD_BEAT_MINUTES),
 /* harmony export */   BAD_BEAT_WINDOW: () => (/* binding */ BAD_BEAT_WINDOW),
 /* harmony export */   BONUS_INTERVAL: () => (/* binding */ BONUS_INTERVAL),
+/* harmony export */   NO_RUNG_PAID: () => (/* binding */ NO_RUNG_PAID),
 /* harmony export */   StreakSession: () => (/* binding */ StreakSession),
 /* harmony export */   TARGET_MINUTES: () => (/* binding */ TARGET_MINUTES),
 /* harmony export */   parseScore: () => (/* binding */ parseScore)
@@ -2348,6 +2752,8 @@ var BAD_BEAT_WINDOW = 5;
 var BAD_BEAT_MINUTES = 5;
 var TARGET_MINUTES = 10;
 var BONUS_INTERVAL = 5;
+/** No rung of the award ladder has been paid for the current streak. */
+var NO_RUNG_PAID = -1;
 /**
  * Scoring rules for one continuous run of the Lichess streak page.
  *
@@ -2359,11 +2765,74 @@ var BONUS_INTERVAL = 5;
  * puzzle.
  */
 var StreakSession = /** @class */ (function () {
-    function StreakSession(startingScore, targetScore) {
-        this.prevScore = startingScore;
+    /**
+     * startingScore is null when the score panel could not be read as the page
+     * opened. That is not a score of 0: a 0 would look like a new streak and wipe
+     * the stored paidRung. The first real reading then decides.
+     */
+    function StreakSession(startingScore, targetScore, paidRung) {
+        if (paidRung === void 0) { paidRung = NO_RUNG_PAID; }
+        this.openingScoreKnown = startingScore != null;
+        this.prevScore = startingScore !== null && startingScore !== void 0 ? startingScore : 0;
         this.targetScore = targetScore;
-        this.targetAwarded = false;
+        this.paidRung = paidRung;
     }
+    /**
+     * Puts the paid rung back after the save of the award for `awardedRung` failed, so
+     * the next reading pays it again. Left alone if a later reading already moved the
+     * paid rung on: that reading's own save decides what is stored.
+     */
+    StreakSession.prototype.undoAward = function (previousPaidRung, awardedRung) {
+        if (this.paidRung == awardedRung) {
+            this.paidRung = previousPaidRung;
+        }
+    };
+    /**
+     * A streak only climbs or ends, so a reading below the paid rung means the streak
+     * that earned it is over, and a new streak must be able to earn it again.
+     */
+    StreakSession.prototype.forgetEndedStreak = function (score) {
+        if (score < this.paidRung) {
+            this.paidRung = NO_RUNG_PAID;
+        }
+    };
+    /**
+     * The highest rung of the award ladder a score has reached -- the target, then
+     * every BONUS_INTERVAL puzzles past it: 40, 45, 50, 55. Scores between two rungs
+     * belong to the lower one, so 41 through 44 all sit on the 40 rung.
+     *
+     * A rung is paid for being *reached*, not for being read exactly. The score panel
+     * is only sampled after a debounce and is torn down between puzzles, so a fast
+     * solve is regularly read once the streak has already moved past the rung's
+     * number; a page session can also open with the streak restored past several. An
+     * exact-match check left those puzzles unpaid and the games locked.
+     */
+    StreakSession.prototype.rungFor = function (score) {
+        if (score < this.targetScore) {
+            return NO_RUNG_PAID;
+        }
+        var rungsPast = Math.floor((score - this.targetScore) / BONUS_INTERVAL);
+        return this.targetScore + (rungsPast * BONUS_INTERVAL);
+    };
+    /**
+     * The award owed for the score the page opened on.
+     *
+     * A session can start with the target already passed, and no later score change
+     * will pay those puzzles out, so the opening reading is settled once here. No bad
+     * beat check: with a single reading there is nothing to have dropped from.
+     */
+    StreakSession.prototype.openingAward = function () {
+        if (!this.openingScoreKnown) {
+            return { streakEnded: false, minutes: 0, reason: '' };
+        }
+        this.forgetEndedStreak(this.prevScore);
+        var rung = this.rungFor(this.prevScore);
+        if (rung <= this.paidRung) {
+            return { streakEnded: false, minutes: 0, reason: '' };
+        }
+        this.paidRung = rung;
+        return { streakEnded: false, minutes: TARGET_MINUTES, reason: "ALREADY PAST ".concat(rung, "! KEEP GOING!") };
+    };
     StreakSession.prototype.onScore = function (curScore) {
         // The page re-renders the score panel between puzzles, so the same score
         // gets read back more than once. Only an actual change can earn time.
@@ -2377,18 +2846,17 @@ var StreakSession = /** @class */ (function () {
             minutes = BAD_BEAT_MINUTES;
             reason = 'BAD BEAT. Take a break';
         }
-        if (curScore == this.targetScore && !this.targetAwarded) {
+        this.forgetEndedStreak(curScore);
+        // One award per reading: a jump over several rungs pays once, for the highest.
+        // Awards reset the unlock rather than add to it, so paying each skipped rung
+        // would grant no more time.
+        var rung = this.rungFor(curScore);
+        if (rung > this.paidRung) {
             if (TARGET_MINUTES >= minutes) {
                 minutes = TARGET_MINUTES;
-                reason = 'HIT TARGET! KEEP GOING!';
+                reason = rung == this.targetScore ? 'HIT TARGET! KEEP GOING!' : 'GO FOR GOLD!';
             }
-            this.targetAwarded = true;
-        }
-        if (curScore >= this.targetScore && curScore % BONUS_INTERVAL == 0) {
-            if (TARGET_MINUTES > minutes) {
-                minutes = TARGET_MINUTES;
-                reason = 'GO FOR GOLD!';
-            }
+            this.paidRung = rung;
         }
         this.prevScore = curScore;
         return { streakEnded: streakEnded, minutes: minutes, reason: reason };
@@ -2414,6 +2882,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ "./src/storage.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 /* harmony import */ var _streak_rules__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./streak_rules */ "./src/streak_rules.ts");
+/* harmony import */ var _event_log__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./event_log */ "./src/event_log.ts");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2458,36 +2927,50 @@ var scoreDivName = "puzzle__side__streak__score text";
 var activeScore = -1;
 var scoreCheckDelayMillis = 800;
 var session = null;
+// How the score was read while it sat on its current value, reported with the next
+// change: many unreadable reads around a skipped score point at the panel rebuild.
+var readStats = { since: Date.now(), reads: 0, unreadable: 0 };
+var lastUnparseable = null;
 // region Active Score Tracker
 function onScoreChange(curScore) {
     return __awaiter(this, void 0, void 0, function () {
-        var award, data, error_1;
+        var prevScore, paidBefore_1, skipped, award_1, decision, secondsOnScore, paidAfter_1, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     console.log("[onScoreChange] Current Score [".concat(curScore, "]"));
-                    award = session.onScore(curScore);
-                    if (award.streakEnded) {
+                    prevScore = session.prevScore;
+                    paidBefore_1 = session.paidRung;
+                    skipped = curScore > prevScore + 1 ? " (JUMP: ".concat(curScore - prevScore - 1, " score(s) never read)") : '';
+                    award_1 = session.onScore(curScore);
+                    decision = award_1.minutes > 0 ? "award +".concat(award_1.minutes, "m \"").concat(award_1.reason, "\"") : 'no award';
+                    secondsOnScore = Math.round((Date.now() - readStats.since) / 1000);
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)("score ".concat(prevScore, " -> ").concat(curScore).concat(skipped, ": ").concat(decision).concat(award_1.streakEnded ? ', STREAK ENDED' : '') +
+                        " [".concat(secondsOnScore, "s on previous score, ").concat(readStats.reads, " reads, ").concat(readStats.unreadable, " unreadable]"));
+                    readStats = { since: Date.now(), reads: 0, unreadable: 0 };
+                    if (award_1.streakEnded) {
                         console.log("[onScoreChange] STREAK OVER :(");
                     }
-                    if (award.minutes > 0) {
-                        console.log("[onScoreChange] ".concat(award.reason));
-                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.addActiveMinutes)(award.minutes);
+                    if (award_1.minutes > 0) {
+                        console.log("[onScoreChange] ".concat(award_1.reason));
                     }
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getData)()];
+                    paidAfter_1 = session.paidRung;
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.saveStreakState)(curScore, paidAfter_1, award_1.minutes).catch(function (error) {
+                            // The award never reached storage: let the next reading pay it again.
+                            if (award_1.minutes > 0) {
+                                session.undoAward(paidBefore_1, paidAfter_1);
+                            }
+                            throw error;
+                        })];
                 case 1:
-                    data = _a.sent();
-                    data.currentScore = curScore;
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.setData)(data)];
-                case 2:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
                     error_1 = _a.sent();
-                    console.log("[onScoreChange] ".concat(error_1.toString()));
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logError)('onScoreChange', error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
@@ -2530,7 +3013,14 @@ function getCurScore() {
     try {
         var curValueString = (_a = getScoreDiv()) === null || _a === void 0 ? void 0 : _a.innerHTML;
         //console.log(`[getCurScore] ${curValueString}`);
-        return (0,_streak_rules__WEBPACK_IMPORTED_MODULE_2__.parseScore)(curValueString);
+        var score = (0,_streak_rules__WEBPACK_IMPORTED_MODULE_2__.parseScore)(curValueString);
+        // Text that is there but is not a number means Lichess changed the panel's
+        // markup -- every read would fail the same way, so say so once.
+        if (score == null && curValueString != null && curValueString != lastUnparseable) {
+            lastUnparseable = curValueString;
+            (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)("score panel text not a number: ".concat(JSON.stringify(curValueString.slice(0, 200))));
+        }
+        return score;
     }
     catch (error) {
         console.error('[getCurScore] ERROR ' + error.toString());
@@ -2544,6 +3034,10 @@ var callback = function (mutationList, observer) {
         if (mutation.type === "childList") {
             setTimeout(function () {
                 var mutatedScore = getCurScore();
+                readStats.reads++;
+                if (mutatedScore == null) {
+                    readStats.unreadable++;
+                }
                 //debugLog('[' + mutatedScore + '] [' + activeScore + ']');
                 if (mutatedScore != null && mutatedScore != activeScore) {
                     //debugLog('mutatedScore [' + mutatedScore + ']');
@@ -2560,20 +3054,62 @@ var config = { attributes: true, childList: true, subtree: true };
 // endregion
 function initStreakTracker() {
     return __awaiter(this, void 0, void 0, function () {
-        var targetScore, observer;
-        var _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var stored, error_2, targetScore, openingScore, opening, openingSession_1, paidAfter_2, observer;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
                     (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[initStreakTracker] START");
-                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.getTargetScore)()];
+                    _a.label = 1;
                 case 1:
-                    targetScore = _b.sent();
-                    activeScore = (_a = getCurScore()) !== null && _a !== void 0 ? _a : 0;
-                    session = new _streak_rules__WEBPACK_IMPORTED_MODULE_2__.StreakSession(activeScore, targetScore);
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, (0,_storage__WEBPACK_IMPORTED_MODULE_0__.readData)()];
+                case 2:
+                    stored = _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_2 = _a.sent();
+                    // Running on defaults would pay at the default target and forget the paid
+                    // rung, so this page does not track the score at all. A reload tries again.
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)('ERROR: settings could not be read, score not tracked on this page -- reload to retry');
+                    return [2 /*return*/];
+                case 4:
+                    targetScore = stored.targetScore;
+                    openingScore = getCurScore();
+                    activeScore = openingScore !== null && openingScore !== void 0 ? openingScore : 0;
+                    // The paid rung comes from storage so that reopening the page on the restored
+                    // streak -- a reload, or the redirect from a locked game page -- does not pay it
+                    // again. An unreadable opening score is passed as null, not 0: see StreakSession.
+                    session = new _streak_rules__WEBPACK_IMPORTED_MODULE_2__.StreakSession(openingScore, targetScore, stored.paidRung);
+                    opening = session.openingAward();
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)("streak page opened: score ".concat(openingScore !== null && openingScore !== void 0 ? openingScore : 'unreadable', ", target ").concat(targetScore, ", ") +
+                        "paid rung ".concat(stored.paidRung, " -> ").concat(session.paidRung, ", unlocked until ").concat((0,_event_log__WEBPACK_IMPORTED_MODULE_3__.formatTime)(stored.expireTime), ", ") +
+                        (opening.minutes > 0 ? "opening award +".concat(opening.minutes, "m \"").concat(opening.reason, "\"") : 'no opening award'));
+                    // Saved even without an award: a new streak resets the stored rung.
+                    if (openingScore != null) {
+                        if (opening.minutes > 0) {
+                            console.log("[initStreakTracker] ".concat(opening.reason));
+                        }
+                        openingSession_1 = session;
+                        paidAfter_2 = session.paidRung;
+                        (0,_storage__WEBPACK_IMPORTED_MODULE_0__.saveStreakState)(openingScore, paidAfter_2, opening.minutes).catch(function (error) {
+                            // The award never reached storage: let the next reading pay it again.
+                            if (opening.minutes > 0) {
+                                openingSession_1.undoAward(stored.paidRung, paidAfter_2);
+                            }
+                            (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logError)('initStreakTracker', error);
+                        });
+                    }
                     observer = new MutationObserver(callback);
+                    if (targetNode == null) {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)('ERROR: #main-wrap not found, score will not be tracked on this page');
+                        return [2 /*return*/];
+                    }
                     // Start observing the target node for configured mutations
                     observer.observe(targetNode, config);
+                    (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.watchStorageChanges)();
+                    window.addEventListener('pagehide', function () {
+                        (0,_event_log__WEBPACK_IMPORTED_MODULE_3__.logEvent)("leaving streak page at score ".concat(activeScore));
+                    });
                     (0,_util__WEBPACK_IMPORTED_MODULE_1__.debugLog)("[initStreakTracker] DONE activeScore [".concat(activeScore, "] targetScore [").concat(targetScore, "]"));
                     return [2 /*return*/];
             }
@@ -2779,6 +3315,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./storage */ "./src/storage.ts");
 /* harmony import */ var _options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./options */ "./src/options.ts");
 /* harmony import */ var _blitz_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blitz_control */ "./src/blitz_control.ts");
+/* harmony import */ var _event_log__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./event_log */ "./src/event_log.ts");
+/* harmony import */ var webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! webextension-polyfill-ts */ "./node_modules/webextension-polyfill-ts/lib/index.js");
+
+
 
 
 
@@ -2790,6 +3330,7 @@ try {
     console.log('TODO: time of day as an option');
     var mode = (0,_util__WEBPACK_IMPORTED_MODULE_0__.getMode)();
     (0,_util__WEBPACK_IMPORTED_MODULE_0__.debugLog)("mode [".concat(mode, "]"));
+    (0,_event_log__WEBPACK_IMPORTED_MODULE_7__.logEvent)("ChessKey ".concat(webextension_polyfill_ts__WEBPACK_IMPORTED_MODULE_8__.browser.runtime.getManifest().version, " loaded, mode ").concat(mode));
     switch (mode) {
         case _util__WEBPACK_IMPORTED_MODULE_0__.Mode.TRACK_STREAK:
             (0,_streak_tracker__WEBPACK_IMPORTED_MODULE_1__.initStreakTracker)();
